@@ -4,6 +4,7 @@
 import vtkmodules.vtkInteractionStyle
 # noinspection PyUnresolvedReferences
 import vtkmodules.vtkRenderingOpenGL2
+from vtkmodules.vtkCommonCore import *
 from vtkmodules.vtkCommonColor import vtkNamedColors
 from vtkmodules.vtkCommonTransforms import vtkTransform
 from vtkmodules.vtkFiltersSources import vtkSphereSource, vtkPlaneSource
@@ -14,7 +15,8 @@ from vtkmodules.vtkRenderingCore import (
     vtkPolyDataMapper,
     vtkRenderWindow,
     vtkRenderWindowInteractor,
-    vtkRenderer
+    vtkRenderer,
+    vtkTextProperty
 )
 
 
@@ -53,6 +55,18 @@ def main():
     transform.Translate(1.0, 0.0, 0.0)
 
     axes = vtkAxesActor()
+    axes.SetTotalLength(0.1, 0.1, 0.1)
+
+    font_file_path = "C:/Users/think/Desktop/AlibabaPuHuiTi-2-55-Regular.ttf"  # 替换为你的字体文件路径
+    text_property = vtkTextProperty()
+    text_property.SetFontFamily(VTK_FONT_FILE)
+    text_property.SetFontFile(font_file_path)
+    text_property.SetFontSize(20)  # 设置文字大小
+    text_property.SetBold(True)   # 设置为粗体
+    text_property.SetItalic(False)  # 设置为斜体
+    text_property.SetColor(1.0, 0.0, 0.0)  # 设置文字颜色
+    axes.GetXAxisCaptionActor2D().SetCaptionTextProperty(text_property)
+    axes.SetXAxisLabelText("Yang Luo最牛逼")
     #  The axes are positioned with a user transform
     axes.SetUserTransform(transform)
 
