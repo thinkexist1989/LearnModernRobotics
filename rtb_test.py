@@ -1,7 +1,10 @@
 #!/usr/bin/env/python
+import matplotlib as mpl
+print(mpl.get_backend())
+mpl.use("QtAgg")
 
 import roboticstoolbox as rtb
-robot = rtb.models.Panda()
+robot = rtb.models.LBR()
 print(robot)
 
 # Te = robot.fkine(robot.qr)

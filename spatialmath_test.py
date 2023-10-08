@@ -1,8 +1,17 @@
 #!/usr/bin/env/python
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 from spatialmath import *
 from spatialmath.base import *
+
+print(mpl.get_backend())
+mpl.use("QtAgg")
+
+# Code: https://github.com/bdaiinstitute/spatialmath-python
+# Document: https://bdaiinstitute.github.io/spatialmath-python/
+
+
 
 # T = SE3(1,2,3)*SE3.Rx(30, 'deg')
 # T.print()
@@ -15,6 +24,7 @@ from spatialmath.base import *
 
 X = SE2.Rand()
 X.print()
-X.animate(frame='A', arrow=False,dims=[-5,5, -5, 5])
+# X.animate(frame='A', arrow=False, dims=[-5, 5, -5, 5])
+X.animate(frame='A', rviz=True, dims=[-5, 5, -5, 5])
 
 plt.show()
